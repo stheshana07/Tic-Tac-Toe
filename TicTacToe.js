@@ -1,8 +1,8 @@
 const X_CLASS = 'x';
 const O_CLASS = 'o';
-const BOT_NAME = "stheshBot 🤖"; // Name for the bot
-let playerXName = ""; // Name for X (always the human in PVB mode)
-let playerOName = ""; // Name for O (human or bot)
+const BOT_NAME = "stheshBot🤖";
+let playerXName = "";
+let playerOName = "";
 let isBotMode = false;
 
 const gameSetupElement = document.getElementById('game-setup');
@@ -20,7 +20,6 @@ let banner = document.getElementById('banner');
 let bannertxt = "";
 let charIndex = 0;
 
-// The rest of the game elements
 const WINNING_COMBINATIONS = [
     [0, 1, 2], [3, 4, 5], [6, 7, 8],
     [0, 3, 6], [1, 4, 7], [2, 5, 8],
@@ -43,7 +42,6 @@ modeBotBtn.addEventListener('click', () => {
     playerVsBotElement.style.display = 'block';
 });
 
-// 2. Start Game Buttons
 startPVPBtn.onclick = () => {
     const p1Input = document.getElementById('player1-name').value.trim();
     const p2Input = document.getElementById('player2-name').value.trim();
@@ -64,8 +62,8 @@ startPVBBtn.onclick = () => {
     const userInput = document.getElementById('user-name').value.trim();
 
     if (userInput) {
-        playerXName = userInput; // User is always 'X'
-        playerOName = BOT_NAME;  // Bot is always 'O'
+        playerXName = userInput;
+        playerOName = BOT_NAME;
         isBotMode = true;
         gameSetupElement.style.display = 'none';
         gameElement.style.display = 'block';
@@ -76,8 +74,6 @@ startPVBBtn.onclick = () => {
 };
 
 restartButton.addEventListener('click', startGame);
-
-// --- Core Game Logic ---
 
 function startGame() {
     oTurn = false;
@@ -112,8 +108,7 @@ function handleClick(e) {
     else {
         swapTurns();
         if (isBotMode && oTurn) {
-            // Initiate bot move after human plays and turns swap
-            setTimeout(botMove, 700); // Give a slight delay for better UX
+            setTimeout(botMove, 1500);
         }
     }
 }
@@ -140,7 +135,6 @@ function updateBanner() {
     const currentPlayerName = oTurn ? playerOName : playerXName;
     const currentPlayerMark = oTurn ? 'O' : 'X';
     
-    // Clear the auto-typing banner content once the game starts
     if(banner.textContent === bannertxt) {
         banner.textContent = '';
     }
@@ -172,10 +166,6 @@ function endGame(draw) {
     winningMessageElement.classList.add('show');
 }
 
-// ------------------------------------
-// --- BOT (AI) LOGIC ---
-// ------------------------------------
-
 function botMove() {
     const botClass = O_CLASS;
     const humanClass = X_CLASS;
@@ -203,7 +193,6 @@ function botMove() {
         }
     }
 
-    // Execute the move
     if (move) {
         placeMark(move, botClass);
         if (checkWin(botClass)) {
@@ -241,3 +230,4 @@ function getBestMove(checkedClass, availableCells) {
     }
     return null;
 }
+
