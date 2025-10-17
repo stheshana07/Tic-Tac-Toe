@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>tictactoe3nd=w534%&d=4$5&2@</title>
+    <meta charset="UFT-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Athabie Dinilanga">
+    <link rel="stylesheet" href="TicTacToe.css">
+</head>
+<body>
+<h1>www.stheshGames.com</h1>
+    <form id="game-setup">
+        <h1>Tic-Tac-Toe</h1>
+        
+        <div id="mode-selection">
+            <h2>Select Game Mode</h2>
+            <button id="mode-human" type="button">Player vs Player</button>
+            <button id="mode-bot" type="button">Player vs Bot</button>
+        </div>
+
+        <div id="player-vs-player" style="display: none;">
+            <h2>Enter Player Names</h2>
+            <input id="player1-name" type="text" placeholder="Player 1 (Plays as 'X')" required><br>
+            <input id="player2-name" type="text" placeholder="Player 2 (Plays as 'O')" required><br>
+            <button id="start-pvp" type="button">Start Player vs Player</button>
+        </div>
+
+        <div id="player-vs-bot" style="display: none;">
+            <h2>Enter Your Name</h2>
+            <input id="user-name" type="text" placeholder="Your Name (Plays as 'X')" required><br>
+            <button id="start-pvb" type="button">Start Player vs Bot</button>
+        </div>
+    </form>
+
+    <div id="game" class="game" style="display: none;">
+        <div><h1 id="banner" style="font-family: fantasy;"></h1></div>
+        <div class="board" id="board">
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+        </div>
+        <div class="winning-message" id="winningMessage">
+            <div id="winningMessageText"></div>
+            <button id="restartButton">Restart</button>
+        </div>
+    </div>
+    <script src="TicTacToe.js"></script>
+</body>
+</html>

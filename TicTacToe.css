@@ -1,0 +1,211 @@
+body {
+    background: #e0e5ec;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; 
+    text-align: center;
+    height: 100vh;
+    margin: 0; 
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    padding: 2px;
+    box-sizing: border-box;
+}
+
+#game-setup { 
+    margin-top: 5px; 
+    border-radius: 15px; 
+    max-width: 350px; 
+    max-height: 90vh; 
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px; 
+    box-sizing: border-box;
+    overflow-y: auto;
+    box-shadow: 6px 6px 12px #a3b1c6,
+                -6px -6px 12px #fff;
+    background: #e0e5ec;
+}
+
+#game-setup h1, #game-setup h2 {
+    color: #333;
+    text-shadow: 1px 1px 2px #fff;
+}
+
+#mode-selection button {
+    margin: 10px 5px;
+    height: 40px;
+    width: 45%; 
+    border-radius: 20px;
+    background: #e0e5ec;
+    color: #333;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    box-shadow: 3px 3px 6px #a3b1c6,
+                -3px -3px 6px #fff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#mode-selection button:hover {
+    box-shadow: inset 2px 2px 4px #a3b1c6,
+                inset -2px -2px 4px #fff;
+    color: #007bff; 
+}
+
+/* Input and generic button styles for the setup forms */
+#player-vs-player input, #player-vs-bot input {
+    height: 35px;
+    width: 90%; 
+    text-align: center;
+    font-family: inherit;
+    font-size: 1rem;
+    margin-top: 10px;
+    border: none; 
+    border-radius: 15px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    /* Inset shadow for the input field */
+    box-shadow: inset 4px 4px 8px #a3b1c6,
+                inset -4px -4px 8px #ffffff;
+    background: #e0e5ec;
+    color: #333;
+    padding: 0 10px;
+}
+
+#start-pvp, #start-pvb {
+    margin-top: 15px;
+    height: 40px;
+    width: 80%; 
+    border-radius: 20px;
+    border: none;
+    background: #4CAF50; 
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    box-shadow: 4px 4px 8px #a3b1c6,
+                -4px -4px 8px #fff;
+    cursor: pointer;
+}
+
+#start-pvp:hover, #start-pvb:hover {
+    background: #388E3C;
+    box-shadow: inset 4px 4px 8px #388E3C,
+                inset -4px -4px 8px #64C068;
+}
+
+/* --- Existing Game and Board Styles (minor adjustments) --- */
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 20vmin);
+    grid-auto-rows: 20vmin; 
+    gap: 5px; 
+    margin: 5px auto; 
+    max-height: 70vh; 
+}
+
+.cell {
+    background: #e0e5ec;
+    border-radius: 8px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 4px 4px 8px #a3b1c6,
+                -4px -4px 8px #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+}
+
+.cell:hover{
+    box-shadow: inset 4px 4px 8px #a3b1c6,
+                inset -4px -4px 8px #ffffff;
+}
+
+.cell.x::after {
+    content: "X";
+    color: #000;
+    font-size: 10vmin; 
+}
+
+.cell.o::after {
+    content: "O";
+    color: #555;
+    font-size: 10vmin; 
+}
+
+.winning-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #e0e5ec;
+    padding: 20px; 
+    border-radius: 15px; 
+    box-shadow: 6px 6px 12px #a3b1c6,
+                -6px -6px 12px #fff;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    z-index: 100;
+    max-width: 90%; 
+    box-sizing: border-box;
+    font-family: fantasy; 
+}
+
+.winning-message.show{
+    display: flex;
+}
+
+.winning-message button {
+    margin-top: 15px;
+    background: #e0e5ec;
+    border: none;
+    padding: 8px 16px; 
+    border-radius: 20px; 
+    box-shadow: 3px 3px 6px #a3b1c6,
+                -3px -3px 6px #fff;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    color: #555;
+    transition: all 0.2s ease;
+}
+
+.winning-message button:hover {
+    box-shadow: inset 2px 2px 4px #a3b1c6,
+                inset -2px -2px 4px #fff;
+}
+
+/* Media query for tiny screens (adjustments for the new elements) */
+@media (max-width: 400px) {
+    .board {
+        grid-template-columns: repeat(3, 25vmin); 
+        grid-auto-rows: 25vmin;
+        gap: 3px;
+    }
+    .cell {
+        font-size: 0.9rem;
+    }
+    #game-setup {
+        max-width: 98%; 
+        padding: 10px;
+    }
+    #mode-selection button {
+        height: 35px;
+        font-size: 12px;
+    }
+    #player-vs-player input, #player-vs-bot input {
+        height: 30px;
+        font-size: 0.9rem;
+    }
+    #start-pvp, #start-pvb {
+        height: 35px;
+        font-size: 14px;
+    }
+}
